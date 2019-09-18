@@ -871,7 +871,10 @@ void TGnuPlot::CreatePlotFile(const TStr& Comment) {
 }
 
 void TGnuPlot::RunGnuPlot() const {
-  // try running gnuplot 
+  // try running gnuplot
+  #ifdef GLib_IOS
+  return;
+  #else 
   if (system(TStr::Fmt("%s %s", GnuPlotFNm.CStr(), PlotFNm.CStr()).CStr())==0) { return; }
   if (! GnuPlotPath.Empty()) { 
     #if defined(GLib_WIN)
@@ -890,5 +893,6 @@ void TGnuPlot::RunGnuPlot() const {
   //FailR(TStr::Fmt("Cannot find GnuPlot (%s) for plot %s. Set the PATH.", GpFNm.CStr(), PlotFNm.CStr()).CStr());
   //ErrNotify(TStr::Fmt("Cannot find GnuPlot (%s) for plot %s. Set the PATH.", GpFNm.CStr(), PlotFNm.CStr()).CStr());
   fprintf(stderr, "[%s:%d] Cannot find GnuPlot (%s) for plot %s. Set the $$PATH variable or TGnuPlot::GnuPlotPath. (%s)\n", __FILE__, __LINE__, GnuPlotFNm.CStr(), PlotFNm.CStr(), TGnuPlot::GnuPlotPath.CStr());
+  #endif
 }
 

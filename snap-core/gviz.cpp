@@ -13,7 +13,7 @@ void GVizDoLayout(const TStr& GraphInFNm, TStr OutFNm, const TGVizLayout& Layout
   IAssert(Ext==".ps" || Ext==".gif" || Ext==".png");
   const TStr ExeCmd = TStr::Fmt("%s -T%s %s -o %s", LayoutExe.CStr(),
     Ext.CStr()+1, GraphInFNm.CStr(), OutFNm.CStr());
-
+#ifndef GLib_IOS
   if (system(ExeCmd.CStr())==0) { return; }
   #if defined(GLib_WIN)
   if (system(TStr::Fmt(".\\%s", ExeCmd.CStr()).CStr())==0) { return; }
@@ -25,6 +25,7 @@ void GVizDoLayout(const TStr& GraphInFNm, TStr OutFNm, const TGVizLayout& Layout
   //#if defined(GLib_WIN)
   //if (ShowPlot) system(TStr::Fmt("start %s", OutFNm.CStr()).CStr());
   //#endif
+#endif
 }
 
 TStr GVizGetLayoutStr(const TGVizLayout& Layout) {

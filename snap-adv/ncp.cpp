@@ -707,8 +707,10 @@ void TLocClustStat::PlotBestClustDens(TStr OutFNm, TStr Desc) const {
   GP.AddCmd("set logscale xyy2 10");
   GP.AddCmd("set y2label \"Conductance\"");
   GP.SavePng();
+  #ifndef GLib_IOS
   system(TStr(TStr("replace_all.py cutEdges.")+OutFNm+".plt \"title \\\"Conductance\" \"axis x1y2 title \\\"Conductance\"").CStr());
   GP.RunGnuPlot();
+  #endif
 }
 
 // all different conducances of all sizes (not just lower envelope)
