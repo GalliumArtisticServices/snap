@@ -18,3 +18,12 @@ clean:
 	$(MAKE) clean -C examples
 	$(MAKE) clean -C test
 	$(MAKE) clean -C tutorials
+
+ios:
+	$(MAKE) IOS_BUILD=1 -C snap-core
+	$(MAKE) -C snap-core lib
+	$(MAKE) -C snap-core libinstall
+osx:
+	$(MAKE) -C snap-core
+	$(MAKE) -C snap-core lib
+	$(MAKE) -C snap-core libinstall 

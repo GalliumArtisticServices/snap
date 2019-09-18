@@ -95,7 +95,10 @@
 
 #if defined(GLib_UNIX)
   #ifndef _environ
-    #if defined(GLib_MACOSX)
+    #if defined(GLib_IOS)
+     #define _environ environ
+     extern char **environ;
+    #elif defined(GLib_MACOSX)
      #include <crt_externs.h>
      #define _environ (*_NSGetEnviron())
     #elif !defined(GLib_CYGWIN)
