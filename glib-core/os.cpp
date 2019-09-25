@@ -803,6 +803,7 @@ void TSysProc::SetLowPriority() {
 }
 
 bool TSysProc::ExeProc(const TStr& ExeFNm, TStr& ParamStr) {
+  #ifndef GLib_IOS
   TStrV SArgV;
   ParamStr.SplitOnWs(SArgV);
 
@@ -821,6 +822,7 @@ bool TSysProc::ExeProc(const TStr& ExeFNm, TStr& ParamStr) {
   //BF: moved role of TSysMsg to TLoop and TSockSys in net.h, hence removed the following inline
   //TSysMsg::Quit(); 
   kill(getpid(), SIGINT);
+  #endif
   return false;
 }
 

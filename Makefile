@@ -26,4 +26,8 @@ ios:
 osx:
 	$(MAKE) -C snap-core
 	$(MAKE) -C snap-core lib
-	$(MAKE) -C snap-core libinstall 
+	$(MAKE) -C snap-core libinstall
+tvos:
+	$(MAKE) TVOS_BUILD=1 -C snap-core
+	$(MAKE) -C snap-core lib
+	$(MAKE) -C snap-core libinstall
