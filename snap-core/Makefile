@@ -17,7 +17,15 @@ lib: Snap.o
 	ar -cvq libsnap.a Snap.o
 
 libinstall: lib
-	cp libsnap.a /usr/local/lib/libsnap.a
+  ifeq ($(IOS_BUILD), 1)
+	mkdir -p $(INSTALL_PATH)/ios
+	cp libsnap.a $(INSTALL_PATH)/ios/libsnap.a
+  else ifeq ($(TVOS_BUILD), 1)
+	mkdir -p $(INSTALL_PATH)/tvos
+	cp libsnap.a $(INSTALL_PATH)/tvos/libsnap.a
+  else
+	cp libsnap.a $(INSTALL_PATH)/libsnap.a
+  endif
 
 clean:
 	rm -f *.o *.a testSnap testSnap.exe *.plt *.tab *.png
