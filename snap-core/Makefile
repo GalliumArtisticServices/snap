@@ -18,13 +18,14 @@ lib: Snap.o
 
 libinstall: lib
   ifeq ($(IOS_BUILD), 1)
-	mkdir -p $(INSTALL_PATH)/ios
-	cp libsnap.a $(INSTALL_PATH)/ios/libsnap.a
+	mkdir -p $(INSTALL_PATH)/iphoneos
+	cp libsnap.a $(INSTALL_PATH)/iphoneos/libsnap.a
   else ifeq ($(TVOS_BUILD), 1)
-	mkdir -p $(INSTALL_PATH)/tvos
-	cp libsnap.a $(INSTALL_PATH)/tvos/libsnap.a
+	mkdir -p $(INSTALL_PATH)/appletvos
+	cp libsnap.a $(INSTALL_PATH)/appletvos/libsnap.a
   else
-	cp libsnap.a $(INSTALL_PATH)/libsnap.a
+	mkdir -p $(INSTALL_PATH)/macosx
+	cp libsnap.a $(INSTALL_PATH)/macosx/libsnap.a
   endif
 
 clean:
