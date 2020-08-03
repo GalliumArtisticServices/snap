@@ -31,3 +31,7 @@ tvos:
 	$(MAKE) TVOS_BUILD=1 -C snap-core
 	$(MAKE) -C snap-core lib
 	$(MAKE) TVOS_BUILD=1 -C snap-core libinstall
+android:
+	$(MAKE) ANDROID_BUILD=1 -C snap-core
+	$(MAKE) -C snap-core lib
+	$(MAKE) ANDROID_BUILD=1 -C snap-core libinstall

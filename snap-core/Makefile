@@ -23,6 +23,9 @@ libinstall: lib
   else ifeq ($(TVOS_BUILD), 1)
 	mkdir -p $(INSTALL_PATH)/appletvos
 	cp libsnap.a $(INSTALL_PATH)/appletvos/libsnap.a
+  else ifeq ($(ANDROID_BUILD), 1)
+	mkdir -p $(INSTALL_PATH)/android
+	cp libsnap.a $(INSTALL_PATH)/android/libsnap.a
   else
 	mkdir -p $(INSTALL_PATH)/macosx
 	cp libsnap.a $(INSTALL_PATH)/macosx/libsnap.a
@@ -30,4 +33,3 @@ libinstall: lib
 
 clean:
 	rm -f *.o *.a testSnap testSnap.exe *.plt *.tab *.png
-
