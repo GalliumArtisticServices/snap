@@ -15,6 +15,7 @@ Snap.o: *.h *.cpp ../glib-core/*.h ../glib-core/*.cpp
 lib: Snap.o
 	rm -f libsnap.a
 	ar -cvq libsnap.a Snap.o
+	ranlib libsnap.a
 
 libinstall: lib
   ifeq ($(IOS_BUILD), 1)
