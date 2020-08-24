@@ -3,6 +3,7 @@
 
 /////////////////////////////////////////////////
 // Environment defines
+
 #if defined(_WIN32)
 #define GLib_WIN
 #define GLib_WIN32
@@ -10,9 +11,6 @@
 #define GLib_WIN
 #define GLib_WIN64
 #elif defined(__linux__)
-#define GLib_UNIX
-#define GLib_LINUX __linux__
-#elif defined(__ANDROID__)
 #define GLib_UNIX
 #define GLib_LINUX __linux__
 #elif defined(__sun__)

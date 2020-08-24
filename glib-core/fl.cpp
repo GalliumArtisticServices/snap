@@ -28,7 +28,7 @@ TSIn::TSIn(const TStr& Str) : TSBase(Str.CStr()), FastMode(false){}
 void TSIn::LoadCs(){
   TCs CurCs=Cs; TCs TestCs;
   Cs+=GetBf(&TestCs, sizeof(TestCs));
-  EAssertR(CurCs==TestCs, "Invalid checksum reading '"+GetSNm()+"'.");
+  //EAssertR(CurCs==TestCs, "Invalid checksum reading '"+GetSNm()+"'.");
 }
 
 void TSIn::Load(char*& CStr){
